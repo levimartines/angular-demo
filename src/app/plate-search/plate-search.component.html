@@ -1,0 +1,18 @@
+<section class="plate-search" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <form
+        (ngSubmit)="submit()" [formGroup]="form"
+        fxLayout="column" fxLayoutAlign="center center">
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="ABC9999" formControlName="plate" name="plate">
+          <mat-icon matSuffix (click)="submit()">search</mat-icon>
+        </mat-form-field>
+
+        <button class="button-submit" color="primary"
+                mat-raised-button type="submit">Pesquisar
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>

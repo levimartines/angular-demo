@@ -1,18 +1,38 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {SidenavListComponent} from "./navigation/sidenav-list/sidenav-list.component";
+import {ToolbarComponent} from "./navigation/toolbar/toolbar.component";
+import {MaterialModule} from "./material/material.module";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {PlateSearchComponent} from './plate-search/plate-search.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import { CarDetailsComponent } from './car-details/car-details.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PlateSearchComponent,
+    SidenavListComponent,
+    ToolbarComponent,
+    CarDetailsComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule
+    FlexLayoutModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
