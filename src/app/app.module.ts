@@ -8,10 +8,12 @@ import {ToolbarComponent} from "./navigation/toolbar/toolbar.component";
 import {MaterialModule} from "./material/material.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {PlateSearchComponent} from './plate-search/plate-search.component';
+import {PlateSearchComponent} from './components/plate-search/plate-search.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { CarDetailsComponent } from './car-details/car-details.component';
+import { CarDetailsComponent } from './components/car-details/car-details.component';
+import { CarRegisterComponent } from './components/car-register/car-register.component';
+import { CustomerRegisterDialogComponent } from './components/customer-register-dialog/customer-register-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CarDetailsComponent } from './car-details/car-details.component';
     PlateSearchComponent,
     SidenavListComponent,
     ToolbarComponent,
-    CarDetailsComponent
+    CarDetailsComponent,
+    CarRegisterComponent,
+    CustomerRegisterDialogComponent
   ],
   imports: [
     AppRoutingModule,

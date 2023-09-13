@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CarService} from "../car.service";
+import {CarService} from "../../services/car.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -16,7 +16,6 @@ export class PlateSearchComponent {
   ) {
   }
 
-
   form = new FormGroup({
     plate: new FormControl('', [Validators.required])
   });
@@ -24,7 +23,11 @@ export class PlateSearchComponent {
   submit() {
     const plate = this.form.value.plate ? this.form.value.plate : '';
     this.service.findByPlate(plate).subscribe(res => {
-      this.router.navigate([`/car/${res.id}`], { state: res });
+      if (res) {
+        this.router.navigate([`/car/${res.id}`], { state: res });
+      } else {
+        this.router.navigate([`/car`], { state: {plate} });
+      }
     });
   }
 }

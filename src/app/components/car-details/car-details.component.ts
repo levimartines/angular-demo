@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
-import {Car} from "../models/car";
+import {Car} from "../../models/car";
 
 @Component({
   selector: 'app-car-details',

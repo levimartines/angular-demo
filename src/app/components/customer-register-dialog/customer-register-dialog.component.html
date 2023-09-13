@@ -1,0 +1,31 @@
+<section class="car-register" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card appearance="outlined" class="width-100">
+    <mat-card-content>
+      <form
+        (ngSubmit)="submit()" [formGroup]="form"
+        fxLayout="column" fxLayoutAlign="center center">
+
+        <mat-form-field appearance="outline" style="margin-top: 8px">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="name" name="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Telefone</mat-label>
+          <input matInput formControlName="phone" name="phone">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Endereço</mat-label>
+          <input matInput formControlName="address" name="address">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Comentários</mat-label>
+          <textarea matInput formControlName="comments" name="comments"></textarea>
+        </mat-form-field>
+
+        <button class="button-submit" color="primary"
+                mat-raised-button type="submit">Cadastrar
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>

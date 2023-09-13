@@ -2,8 +2,9 @@ import {Customer} from "./customer";
 
 export interface Car {
   id: number;
-  name: string;
+  model: string;
+  color: string;
   comments: string;
   plate: string;
-  customer: Customer;
+  customer: Partial<Customer>;
 }

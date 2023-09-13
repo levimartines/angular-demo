@@ -1,0 +1,41 @@
+<section class="car-register" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card appearance="outlined" class="width-100">
+    <mat-card-content>
+      <form
+        (ngSubmit)="submit()" [formGroup]="form"
+        fxLayout="column" fxLayoutAlign="center center">
+
+        <mat-form-field appearance="outline" style="margin-top: 8px">
+          <mat-label>Placa</mat-label>
+          <input matInput formControlName="plate" name="plate">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Modelo</mat-label>
+          <input matInput formControlName="model" name="model">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Cor</mat-label>
+          <input matInput formControlName="color" name="color">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Comentários</mat-label>
+          <textarea matInput formControlName="comments" name="comments"></textarea>
+        </mat-form-field>
+        <div style="width: 80%">
+          <mat-form-field>
+            <mat-label>Cliente</mat-label>
+            <mat-select formControlName="customerId">
+              <mat-option *ngFor="let customer of customers" [value]="customer.id">
+                {{customer.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-icon matSuffix (click)="openDialog()" class="icon-display" style="">add</mat-icon>
+        </div>
+        <button class="button-submit" color="primary"
+                mat-raised-button type="submit">Cadastrar
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>
