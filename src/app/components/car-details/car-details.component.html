@@ -8,4 +8,16 @@
       <p>Cliente: {{car.customer.name}}</p>
     </mat-card-content>
   </mat-card>
+  <h2 style="margin-top: 16px">Serviços</h2>
+  <div>
+    <button class="button-submit" color="primary"
+            mat-raised-button (click)="newService()">Novo serviço</button>
+  </div>
+  <mat-card appearance="outlined" style="width: 100%;" *ngFor="let service of car.services">
+    <mat-card-content>
+      <p>Data: {{service.date}}</p>
+      <p *ngFor="let item of service.serviceItems">{{item.name}}       R${{item.value}}</p>
+      <p>Total: R${{getTotal(service.serviceItems)}}</p>
+    </mat-card-content>
+  </mat-card>
 </section>

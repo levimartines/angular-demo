@@ -1,7 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CarService} from "../../services/car.service";
 import {Router} from "@angular/router";
+import {OKTA_AUTH, OktaAuthStateService} from "@okta/okta-angular";
+import {OktaAuth} from "@okta/okta-auth-js";
 
 @Component({
   selector: 'app-plate-search',
@@ -13,6 +15,8 @@ export class PlateSearchComponent {
   constructor(
     private service: CarService,
     private router: Router,
+    @Inject(OKTA_AUTH) public oktaAuth: OktaAuth,
+    public authService: OktaAuthStateService
   ) {
   }
 
