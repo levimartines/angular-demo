@@ -28,9 +28,10 @@ export class PlateSearchComponent {
     const plate = this.form.value.plate ? this.form.value.plate : '';
     this.service.findByPlate(plate).subscribe(res => {
       if (res) {
-        this.router.navigate([`/car/${res.id}`], { state: res });
+        this.service.setCar(res);
+        this.router.navigate([`/car/${res.id}`]);
       } else {
-        this.router.navigate([`/car`], { state: {plate} });
+        this.router.navigate([`/car`], { state: { plate } });
       }
     });
   }

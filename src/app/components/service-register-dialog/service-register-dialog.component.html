@@ -1,1 +1,75 @@
-<p>service-register-dialog works!</p>
+<section class="car-register" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card appearance="outlined" class="serv-reg-card">
+    <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+      <mat-card-title>Cadastrar serviço</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <mat-card appearance="raised" class="serv-reg-card">
+        <mat-card-header>
+          <mat-card-subtitle>Adicionar item</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <form
+            (ngSubmit)="addItem()" [formGroup]="form">
+            <mat-form-field appearance="outline" style="margin-top: 8px; width: 100%">
+              <mat-label>Nome</mat-label>
+              <input matInput formControlName="name" name="name">
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+              <mat-form-field appearance="outline" style="width: 40%">
+                <mat-label>Valor</mat-label>
+                <span matPrefix>&nbsp;R$&nbsp;</span>
+                <input matInput formControlName="value" name="value" type="number">
+              </mat-form-field>
+              <div>
+                <button mat-mini-fab color="primary" type="submit" style="margin-bottom: 24px">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+
+      <table mat-table [dataSource]="items" class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="item">
+          <th mat-header-cell *matHeaderCellDef style="width: 75%">Item</th>
+          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef style="width: 20%">Valor</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.value | currency: 'BRL':'symbol':'':'pt-BR'}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef style="width: 4%">Del</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="remove(element)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <div fxLayout="space-between" fxLayoutAlign="center center" style="margin-top: 24px">
+        <div style="text-align: center; width: 60%" fxLayout="center" fxLayoutAlign="center center">
+          Total: &nbsp;<b>{{getTotal(items) | currency: 'BRL':'symbol':'':'pt-BR'}}</b>
+        </div>
+        <div style="width: 40%" fxLayout="center" fxLayoutAlign="center center">
+          <button class="button-submit" color="primary"
+                  mat-raised-button (click)="submit()">Cadastrar
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+</section>

@@ -1,11 +1,15 @@
 <section class="car-details" fxLayout="column" fxLayoutAlign="center center">
   <mat-card appearance="outlined" style="width: 100%;">
-    <mat-card-content>
-      <p>Placa: {{car.plate}}</p>
-      <p>Carro: {{car.model}}</p>
-      <p>Cor: {{car.color}}</p>
-      <p>Comentários: {{car.comments}}</p>
-      <p>Cliente: {{car.customer.name}}</p>
+    <mat-card-content fxLayout="row" fxLayoutAlign="space-around">
+      <div fxLayout="column" >
+        <p>Placa: <b>{{car.plate}}</b></p>
+        <p>Carro: {{car.model}}</p>
+        <p>Cor: {{car.color}}</p>
+        <p>Comentários: {{car.comments}}</p>
+      </div>
+      <div fxLayout="column" >
+        <p>Cliente: {{car.customer.name}}</p>
+      </div>
     </mat-card-content>
   </mat-card>
   <h2 style="margin-top: 16px">Serviços</h2>
@@ -13,11 +17,10 @@
     <button class="button-submit" color="primary"
             mat-raised-button (click)="newService()">Novo serviço</button>
   </div>
-  <mat-card appearance="outlined" style="width: 100%;" *ngFor="let service of car.services">
+  <mat-card appearance="outlined" style="width: 100%; margin-top: 16px" *ngFor="let service of car.services">
     <mat-card-content>
-      <p>Data: {{service.date}}</p>
-      <p *ngFor="let item of service.serviceItems">{{item.name}}       R${{item.value}}</p>
-      <p>Total: R${{getTotal(service.serviceItems)}}</p>
+      <p>Data: <b>{{service.date}}</b></p>
+      <p>Valor: <b>R${{getTotal(service.items)}}</b></p>
     </mat-card-content>
   </mat-card>
 </section>

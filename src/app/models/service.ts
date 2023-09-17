@@ -1,6 +1,8 @@
 import {ServiceItem} from "./service-item";
 
 export interface Service {
+  id: number;
   date: Date;
-  serviceItems: ServiceItem[];
+  done: boolean;
+  items: ServiceItem[];
 }

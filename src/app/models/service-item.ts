@@ -1,4 +1,4 @@
 export interface ServiceItem {
-  name: string;
-  value: number;
+  name?: string | null;
+  value?: number | null;
 }

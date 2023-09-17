@@ -8,5 +8,5 @@ export interface Car {
   comments: string;
   plate: string;
   customer: Partial<Customer>;
-  services: Partial<Service>[];
+  services: Service[];
 }

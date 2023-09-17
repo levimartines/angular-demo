@@ -48,7 +48,8 @@ export class CarRegisterComponent {
     } as Car;
     this.carService.save(car).subscribe(res => {
       this.carService.findById(res.id.toString()).subscribe(carResponse => {
-        this.router.navigate([`/car/${carResponse.id}`], { state: carResponse });
+        this.carService.setCar(carResponse);
+        this.router.navigate([`/car/${carResponse.id}`]);
       });
     })
   }

@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {SidenavListComponent} from "./navigation/sidenav-list/sidenav-list.component";
@@ -16,6 +16,11 @@ import {
 } from './components/customer-register-dialog/customer-register-dialog.component';
 import {ServiceRegisterDialogComponent} from './components/service-register-dialog/service-register-dialog.component';
 import {AuthRoutingModule} from './auth-routing.module';
+import {registerLocaleData} from "@angular/common";
+import localePt from '@angular/common/locales/pt';
+
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -38,7 +43,9 @@ import {AuthRoutingModule} from './auth-routing.module';
     HttpClientModule,
     AuthRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

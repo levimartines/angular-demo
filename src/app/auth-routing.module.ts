@@ -3,17 +3,17 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {OKTA_CONFIG, OktaAuthModule, OktaCallbackComponent} from '@okta/okta-angular';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {OktaAuth} from '@okta/okta-auth-js';
+import {OktaAuth, OktaAuthOptions} from '@okta/okta-auth-js';
 import {AuthInterceptor} from './shared/okta/auth.interceptor';
 import {PlateSearchComponent} from "./components/plate-search/plate-search.component";
 import {CarRegisterComponent} from "./components/car-register/car-register.component";
 import {CarDetailsComponent} from "./components/car-details/car-details.component";
 
-const oktaConfig = {
+const oktaConfig: OktaAuthOptions = {
   issuer: 'https://dev-10789051.okta.com/',
   clientId: '0oab99obojpDufh9X5d7',
   redirectUri: '/callback',
-  scopes: ['openid', 'profile']
+  scopes: ['openid', 'profile', 'groups', 'email', 'okta.roles.read'],
 };
 
 const oktaAuth = new OktaAuth(oktaConfig);
