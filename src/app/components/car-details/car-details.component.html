@@ -1,26 +1,34 @@
-<section class="car-details" fxLayout="column" fxLayoutAlign="center center">
-  <mat-card appearance="outlined" style="width: 100%;">
-    <mat-card-content fxLayout="row" fxLayoutAlign="space-around">
-      <div fxLayout="column" >
-        <p>Placa: <b>{{car.plate}}</b></p>
-        <p>Carro: {{car.model}}</p>
-        <p>Cor: {{car.color}}</p>
-        <p>Comentários: {{car.comments}}</p>
-      </div>
-      <div fxLayout="column" >
-        <p>Cliente: {{car.customer.name}}</p>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <h2 style="margin-top: 16px">Serviços</h2>
-  <div>
-    <button class="button-submit" color="primary"
-            mat-raised-button (click)="newService()">Novo serviço</button>
-  </div>
-  <mat-card appearance="outlined" style="width: 100%; margin-top: 16px" *ngFor="let service of car.services">
-    <mat-card-content>
-      <p>Data: <b>{{service.date}}</b></p>
-      <p>Valor: <b>R${{getTotal(service.items)}}</b></p>
-    </mat-card-content>
-  </mat-card>
-</section>
+<ng-container *ngIf="!car; else carTemplate"></ng-container>
+<ng-template #carTemplate>
+  <section class="car-details" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card appearance="outlined" style="width: 100%;">
+      <mat-card-content fxLayout="row" fxLayoutAlign="space-around">
+        <div fxLayout="column" >
+          <p>Placa: <b>{{car.plate}}</b></p>
+          <p>Carro: {{car.model}}</p>
+          <p>Cor: {{car.color}}</p>
+          <p>Comentários: {{car.comments}}</p>
+        </div>
+        <div fxLayout="column" >
+          <p>Cliente: {{car.customer.name}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <h2 style="margin-top: 16px">Serviços</h2>
+    <div>
+      <button class="button-submit" color="primary"
+              mat-raised-button (click)="newService()">Novo serviço</button>
+    </div>
+    <mat-card appearance="outlined" style="width: 100%; margin-top: 16px" *ngFor="let service of car.services">
+      <mat-card-content fxLayout="row" fxLayoutAlign="space-between">
+        <div>
+          <p>Data: <b>{{service.date}}</b></p>
+          <p>Valor: <b>R${{getTotal(service.items)}}</b></p>
+        </div>
+        <div fxLayoutAlign="center center">
+          <mat-icon class="icon-display" (click)="downloadDocument(service)">description</mat-icon>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</ng-template>

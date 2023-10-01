@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, catchError, Observable, retry, Subject, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, retry} from "rxjs";
 import {Car} from "../models/car";
 import {ServiceItem} from "../models/service-item";
 import {Service} from "../models/service";
+import {BaseService} from "./base.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CarService {
-  apiURL = 'http://localhost:8080'
+export class CarService extends BaseService {
+
   private car = new BehaviorSubject<Car>({
     plate: '',
     services: [],
@@ -26,14 +26,10 @@ export class CarService {
     },
     comments: ''
   });
-
   getCar = this.car.asObservable();
 
   setCar(car: Car) {
     this.car.next(car);
-  }
-
-  constructor(private http: HttpClient) {
   }
 
   save(car: Partial<Car>) {
@@ -60,16 +56,4 @@ export class CarService {
       .pipe(retry(1), catchError(this.handleError));
   }
 
-  handleError(error: any) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = error.error.message;
-    } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    window.alert(errorMessage);
-    return throwError(() => {
-      return errorMessage;
-    });
-  }
 }

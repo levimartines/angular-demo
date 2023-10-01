@@ -1,7 +1,7 @@
 import {Component, Inject, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ServiceItem} from "../../models/service-item";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatTable} from "@angular/material/table";
 import {CarService} from "../../services/car.service";
 import {Car} from "../../models/car";
@@ -16,8 +16,8 @@ export class ServiceRegisterDialogComponent {
   items: ServiceItem[] = [];
   displayedColumns: string[] = ['item', 'value', 'delete'];
   form = new FormGroup({
-    name: new FormControl(''),
-    value: new FormControl(''),
+    name: new FormControl('',[Validators.required]),
+    value: new FormControl('',[Validators.required]),
   });
 
   constructor(
