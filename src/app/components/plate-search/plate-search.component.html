@@ -1,9 +1,8 @@
-<section class="plate-search" fxLayout="column" fxLayoutAlign="center center">
+<section class="plate-search column center">
   <mat-card appearance="outlined">
     <mat-card-content *ngIf="(authService.authState$ | async)?.isAuthenticated">
       <form
-        (ngSubmit)="submit()" [formGroup]="form"
-        fxLayout="column" fxLayoutAlign="center center">
+        (ngSubmit)="submit()" [formGroup]="form" class="column center">
         <mat-form-field appearance="outline">
           <input matInput placeholder="ABC9999" formControlName="plate" name="plate">
           <mat-icon matSuffix (click)="submit()">search</mat-icon>
@@ -14,7 +13,7 @@
         </button>
       </form>
     </mat-card-content>
-    <mat-card-content *ngIf="!(authService.authState$ | async)?.isAuthenticated" class="login-card" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card-content *ngIf="!(authService.authState$ | async)?.isAuthenticated" class="login-card column center">
       <button (click)="oktaAuth.signInWithRedirect()"
               class="button-submit" color="primary"
               mat-raised-button>Login</button>

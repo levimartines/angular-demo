@@ -12,3 +12,30 @@ body {
 #cdk-overlay-0 {
   width: 90vw !important;
 }
+
+.row {
+  display: flex !important;
+  flex-direction: row;
+}
+
+.column {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.center {
+  display: flex !important;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.space-around {
+  display: flex !important;
+  justify-content: space-around;
+}
+
+.space-between {
+  display: flex !important;
+  justify-content: space-between;
+}

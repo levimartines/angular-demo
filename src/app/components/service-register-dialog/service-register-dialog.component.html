@@ -1,6 +1,6 @@
-<section class="car-register" fxLayout="column" fxLayoutAlign="center center">
+<section class="car-register column center">
   <mat-card appearance="outlined" class="serv-reg-card">
-    <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+    <mat-card-header class="column center">
       <mat-card-title>Cadastrar serviço</mat-card-title>
     </mat-card-header>
 
@@ -17,7 +17,7 @@
               <mat-label>Nome</mat-label>
               <input matInput formControlName="name" name="name">
             </mat-form-field>
-            <div fxLayout="row" fxLayoutAlign="space-around center">
+            <div class="row space-around" style="align-items: center; align-content: center">
               <mat-form-field appearance="outline" style="width: 40%">
                 <mat-label>Valor</mat-label>
                 <span matPrefix>&nbsp;R$&nbsp;</span>
@@ -59,11 +59,11 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
 
-      <div fxLayout="space-between" fxLayoutAlign="center center" style="margin-top: 24px">
-        <div style="text-align: center; width: 60%" fxLayout="center" fxLayoutAlign="center center">
+      <div class="space-between center" style="margin-top: 24px">
+        <div class="center" style="text-align: center; width: 60%">
           Total: &nbsp;<b>{{getTotal(items) | currency: 'BRL':'symbol':'':'pt-BR'}}</b>
         </div>
-        <div style="width: 40%" fxLayout="center" fxLayoutAlign="center center">
+        <div style="width: 40%" class="center">
           <button class="button-submit" color="primary"
                   mat-raised-button (click)="submit()">Cadastrar
           </button>

@@ -4,7 +4,6 @@ import {AppComponent} from './app.component';
 import {SidenavListComponent} from "./navigation/sidenav-list/sidenav-list.component";
 import {ToolbarComponent} from "./navigation/toolbar/toolbar.component";
 import {MaterialModule} from "./material/material.module";
-import {FlexLayoutModule} from "@angular/flex-layout";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {PlateSearchComponent} from './components/plate-search/plate-search.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -18,7 +17,18 @@ import {ServiceRegisterDialogComponent} from './components/service-register-dial
 import {AuthRoutingModule} from './auth-routing.module';
 import {registerLocaleData} from "@angular/common";
 import localePt from '@angular/common/locales/pt';
+import { OktaAuth, OktaAuthOptions } from '@okta/okta-auth-js';
+import { OktaAuthModule, OktaConfig } from '@okta/okta-angular';
 
+const oktaConfig: OktaAuthOptions = {
+  issuer: 'https://dev-10789051.okta.com/oauth2/default',
+  clientId: '0oab99obojpDufh9X5d7',
+  redirectUri: '/callback',
+  scopes: ['openid', 'profile', 'email'],
+};
+
+const oktaAuth = new OktaAuth(oktaConfig);
+const moduleConfig: OktaConfig = { oktaAuth };
 
 registerLocaleData(localePt);
 
@@ -35,12 +45,12 @@ registerLocaleData(localePt);
   ],
   imports: [
     BrowserModule,
-    FlexLayoutModule,
     MaterialModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    OktaAuthModule.forRoot(moduleConfig),
     AuthRoutingModule
   ],
   providers: [

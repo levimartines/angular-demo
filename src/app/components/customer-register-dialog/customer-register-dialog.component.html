@@ -1,13 +1,10 @@
-<section class="car-register" fxLayout="column" fxLayoutAlign="center center">
+<section class="car-register column center">
   <mat-card appearance="outlined" class="width-100">
-    <mat-card-header fxLayout="column" fxLayoutAlign="center center" style="margin-bottom: 8px">
+    <mat-card-header class="column center" style="margin-bottom: 8px">
       <mat-card-title>Cadastrar cliente</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form
-        (ngSubmit)="submit()" [formGroup]="form"
-        fxLayout="column" fxLayoutAlign="center center">
-
+      <form (ngSubmit)="submit()" [formGroup]="form" class="column center">
         <mat-form-field appearance="outline" style="margin-top: 8px">
           <mat-label>Nome</mat-label>
           <input matInput formControlName="name" name="name">
