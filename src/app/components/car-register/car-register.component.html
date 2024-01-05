@@ -26,9 +26,9 @@
         <div style="width: 80%">
           <mat-form-field>
             <mat-label>Cliente</mat-label>
-            <mat-select formControlName="customerId">
+            <mat-select formControlName="customerId" [compareWith]="compareCustomers">
               <mat-option *ngFor="let customer of customers" [value]="customer.id">
-                {{customer.name}}
+                {{ customer.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
