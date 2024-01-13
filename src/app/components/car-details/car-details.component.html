@@ -19,11 +19,11 @@
       <button class="button-submit" color="primary"
               mat-raised-button (click)="newService()">Novo serviço</button>
     </div>
-    <mat-card appearance="outlined" style="width: 100%; margin-top: 16px" *ngFor="let service of car.services">
+    <mat-card appearance="outlined" style="width: 100%; margin-top: 16px" *ngFor="let service of car.estimates">
       <mat-card-content class="row space-between">
         <div>
           <p>Data: <b>{{service.date}}</b></p>
-          <p>Valor: <b>R${{getTotal(service.items)}}</b></p>
+          <p>Valor: <b>R${{service.total}}</b></p>
         </div>
         <div class="center">
           <mat-icon class="icon-display" (click)="downloadDocument(service)">description</mat-icon>

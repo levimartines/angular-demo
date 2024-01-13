@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Car} from "../../models/car";
-import {ServiceItem} from "../../models/service-item";
+import {EstimateItem} from "../../models/estimate-item";
 import {MatDialog} from "@angular/material/dialog";
-import {ServiceRegisterDialogComponent} from "../service-register-dialog/service-register-dialog.component";
+import {EstimateRegisterDialogComponent} from "../estimate-register-dialog/estimate-register-dialog.component";
 import {CarService} from "../../services/car.service";
-import {Service} from "../../models/service";
-import {ServicesService} from "../../services/services.service";
+import {Estimate} from "../../models/estimate";
+import {EstimatesService} from "../../services/estimates.service";
 import {DatePipe} from "@angular/common";
 
 @Component({
@@ -21,7 +21,7 @@ export class CarDetailsComponent {
   constructor(
     private route: ActivatedRoute,
     private carService: CarService,
-    private servicesService: ServicesService,
+    private servicesService: EstimatesService,
     public dialog: MatDialog,
     public pipe: DatePipe
   ) {
@@ -37,13 +37,13 @@ export class CarDetailsComponent {
     });
   }
 
-  getTotal(serviceItems: ServiceItem[] | undefined): string {
-    const total = serviceItems?.reduce((a, b) => a + b.value!, 0);
+  getTotal(serviceItems: EstimateItem[] | undefined): string {
+    const total = serviceItems?.reduce((a, b) => a + b.price!, 0);
     return total ? total.toString() : '0.00';
   }
 
   newService() {
-    this.dialog.open(ServiceRegisterDialogComponent, {
+    this.dialog.open(EstimateRegisterDialogComponent, {
       width: '90%',
       maxWidth: '90vw',
       data: {
@@ -52,7 +52,7 @@ export class CarDetailsComponent {
     });
   }
 
-  downloadDocument(service: Service) {
+  downloadDocument(service: Estimate) {
     this.servicesService.downloadDocument(service?.id?.toString()).subscribe(res => {
       let url = window.URL.createObjectURL(res);
       let a = document.createElement('a');

@@ -19,7 +19,7 @@ export class CarRegisterComponent {
   form = new FormGroup({
     plate: new FormControl('', [Validators.required]),
     model: new FormControl('', [Validators.required]),
-    color: new FormControl(''),
+    color: new FormControl('', [Validators.required]),
     comments: new FormControl(''),
     customerId: new FormControl('', [Validators.required]),
   });

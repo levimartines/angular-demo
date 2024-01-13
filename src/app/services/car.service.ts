@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, catchError, Observable, retry} from "rxjs";
 import {Car} from "../models/car";
-import {ServiceItem} from "../models/service-item";
-import {Service} from "../models/service";
+import {EstimateItem} from "../models/estimate-item";
+import {Estimate} from "../models/estimate";
 import {BaseService} from "./base.service";
 
 @Injectable({
@@ -12,7 +12,7 @@ export class CarService extends BaseService {
 
   private car = new BehaviorSubject<Car>({
     plate: '',
-    services: [],
+    estimates: [],
     id: 0,
     color: '',
     model: '',
@@ -38,9 +38,9 @@ export class CarService extends BaseService {
       .pipe(retry(1), catchError(this.handleError));
   }
 
-  newService(id: number, items: ServiceItem[]) {
+  newService(id: number, items: EstimateItem[]) {
     return this.http
-      .post<Service>(`${this.apiURL}/cars/${id}/services`, items)
+      .post<Estimate>(`${this.apiURL}/cars/${id}/estimates`, items)
       .pipe(retry(1), catchError(this.handleError));
   }
 

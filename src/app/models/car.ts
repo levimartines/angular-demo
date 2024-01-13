@@ -1,5 +1,5 @@
 import {Customer} from "./customer";
-import {Service} from "./service";
+import {Estimate} from "./estimate";
 
 export interface Car {
   id: number;
@@ -8,5 +8,5 @@ export interface Car {
   comments: string;
   plate: string;
   customer: Partial<Customer>;
-  services: Service[];
+  estimates: Estimate[];
 }

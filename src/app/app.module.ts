@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {SidenavListComponent} from "./navigation/sidenav-list/sidenav-list.component";
 import {ToolbarComponent} from "./navigation/toolbar/toolbar.component";
-import {MaterialModule} from "./material/material.module";
+import {MaterialModule} from "./shared/material/material.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {PlateSearchComponent} from './components/plate-search/plate-search.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -13,7 +13,7 @@ import {CarRegisterComponent} from './components/car-register/car-register.compo
 import {
   CustomerRegisterDialogComponent
 } from './components/customer-register-dialog/customer-register-dialog.component';
-import {ServiceRegisterDialogComponent} from './components/service-register-dialog/service-register-dialog.component';
+import {EstimateRegisterDialogComponent} from './components/estimate-register-dialog/estimate-register-dialog.component';
 import {AuthRoutingModule} from './auth-routing.module';
 import {registerLocaleData} from "@angular/common";
 import localePt from '@angular/common/locales/pt';
@@ -41,7 +41,7 @@ registerLocaleData(localePt);
     CarDetailsComponent,
     CarRegisterComponent,
     CustomerRegisterDialogComponent,
-    ServiceRegisterDialogComponent
+    EstimateRegisterDialogComponent
   ],
   imports: [
     BrowserModule,
