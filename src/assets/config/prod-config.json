@@ -1,7 +1,0 @@
-{
-  "backend": "http://localhost:8080",
-  "okta": {
-    "issuer": "https://dev-10789051.okta.com/oauth2/default",
-    "clientId": "0oab99obojpDufh9X5d7"
-  }
-}

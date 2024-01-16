@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {throwError} from "rxjs";
-import { AppConfig } from '../models/app-config';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,8 @@ import { AppConfig } from '../models/app-config';
 export abstract class BaseService {
   apiURL: string;
 
-  protected constructor(protected http: HttpClient, private appConfig: AppConfig) {
-    this.apiURL = appConfig.backend;
+  protected constructor(protected http: HttpClient) {
+    this.apiURL = environment.backend;
   }
 
   handleError(error: any) {
