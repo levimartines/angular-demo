@@ -1,14 +1,17 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {throwError} from "rxjs";
+import { AppConfig } from '../models/app-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export abstract class BaseService {
-  apiURL = 'http://localhost:8080';
+  apiURL: string;
 
-  protected constructor(protected http: HttpClient) { }
+  protected constructor(protected http: HttpClient, private appConfig: AppConfig) {
+    this.apiURL = appConfig.backend;
+  }
 
   handleError(error: any) {
     let errorMessage = '';
